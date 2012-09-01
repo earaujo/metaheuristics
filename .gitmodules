@@ -1,0 +1,3 @@
+[submodule "evolve"]
+	path = evolve
+	url = git://github.com/earaujo/evolve.git
