@@ -26,6 +26,12 @@ sys.path.append(os.path.realpath(path))
 import utils
 import processor
 
+HELP_MESSAGE = """Usage: jobshop.py -e <descriptor file> [options]
+Options:
+  -i <integer> \t Descriptor array begin, inclusive
+  -o <integer> \t Descriptor array end, inclusive
+"""
+
 def process_experiment(experiment, times, instance_folder, output_folder):
   experiment_options = ["-r", experiment["recombination"], "-s", experiment["selection"], "-m", experiment["mutation"]]
   instances_file = experiment["instances"]
@@ -40,8 +46,8 @@ def process_experiment(experiment, times, instance_folder, output_folder):
       output_file = "{0}{1}-{2}{3:02}.csv".format(folder_name, algorithm, file_prefix, i)
       arguments = ["bin/jobshop", algorithm_argument, "-f", instances_file, "-o", output_file]
       arguments = arguments + experiment_options
+      print(" ".join(arguments))
       subprocess.call(arguments)
-#     print(" ".join(arguments))
       del output_file, arguments
     prefix = "{0}-{1}".format(algorithm, file_prefix)
     processor.experiments_processor(folder_name, prefix)
@@ -49,14 +55,20 @@ def process_experiment(experiment, times, instance_folder, output_folder):
 
 def process_arguments(arguments):
   experiments = start = stop = None
+  if len(arguments) < 2 or arguments[1] == '--help' or '--help' in arguments:
+    print(HELP_MESSAGE)
+    sys.exit(0)
   for i in range(1, len(arguments)):
-    if arguments[i] == '-experiments':
+    # Experiments argument
+    if arguments[i] == '-e':
       if i + 1 < len(arguments):
         experiments = arguments[i + 1]
-    elif arguments[i] == '-start':
+    # Descriptor array begin, inclusive
+    elif arguments[i] == '-i':
       if i + 1 < len(arguments):
         start = int(arguments[i + 1])
-    elif arguments[i] == '-stop':
+    # Descriptor array end, inclusive
+    elif arguments[i] == '-o':
       if i + 1 < len(arguments):
         stop = int(arguments[i + 1])
   return (experiments, start, stop)
@@ -65,6 +77,7 @@ def main(argv):
   experiments_file, start, stop = process_arguments(argv)
   if not experiments_file or not os.path.isfile(experiments_file):
     sys.exit(-1)
+  print(datetime.datetime.now())
   experiments_file = open(experiments_file)
   descriptor = json.load(experiments_file)
   experiments_file.close()
@@ -85,9 +98,7 @@ def main(argv):
     selected_experiments = experiments
   for experiment in selected_experiments:
     process_experiment(experiment, times, instances_folder, output_folder)
+  print(datetime.datetime.now())
   
 if __name__ == '__main__':
-  print(datetime.datetime.now())
   main(sys.argv)
-  print(datetime.datetime.now())
-
