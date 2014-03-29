@@ -1,11 +1,7 @@
 
-# About: Metaheuristics Research Algorithms
+# Metaheuristics Research Algorithms
 
-Version 0.0.9 // Copyright 2012 Éwerton Assis (earaujoassis at gmail dot com)
-
-Please refer to the included **LICENCE file** for terms of use.
-
-Each folder has different purposes:
+Each folder has a different purpose:
 
 * **eo**: it contains an extension for the *Evolving Objects* (EO) Library, written in C++; that extension is a hybridization module for Genetic
 Algorithms, named In Vitro Fertilization Module (IVFm), or In Vitro Fertilization Genetic Algorithm (IVF-GA). That folder also contains an
@@ -28,3 +24,10 @@ LICENSE scope. That application code is also written upon the "evolve" code note
 ## Dependencies
 
  * GSL (GNU Scientific Library) -- http://www.gnu.org/software/gsl/
+ * Evolve -- http://evolvecode.org/
+
+## License
+
+Please refer to the included *LICENSE file* for terms of use.
+
+Apache License, Version 2.0. Copyright 2011-2014 &copy; Ewerton Assis.
