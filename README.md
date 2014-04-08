@@ -22,6 +22,6 @@ LICENSE scope. That application code is also written upon the "evolve" code note
 
 ## License
 
-Please refer to the included *LICENSE file* for terms of use.
+Please refer to the included LICENSE file for terms of use.
 
 Apache License, Version 2.0. Copyright 2011-2014 &copy; Ewerton Assis.
