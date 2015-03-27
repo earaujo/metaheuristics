@@ -1,7 +1,7 @@
 {
   "times" : 20,
-  "instances_folder" : "/home/earaujo/personal/coding/metaheuristics/scheduling/jobshop/exercises/config",
-  "output_folder" : "/home/earaujo/personal/coding/metaheuristics/scheduling/jobshop/exercises/results",
+  "instances_folder" : "exercises/config",
+  "output_folder" : "exercises/results",
   "experiments" : [
     {
       "instances" : "or-library.txt",
@@ -248,4 +248,3 @@
     }
   ]
 }
-

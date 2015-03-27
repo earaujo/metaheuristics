@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
         if (argc > 1)
             if (not std::strcmp(argv[1], "--easy")) // If argv[1] == "--easy"
                 using_easy_ea = true;
-        
+
         rng.reseed(time(0));
         std::cin >> instances;
         for (unsigned i = 0; i < instances; i++)

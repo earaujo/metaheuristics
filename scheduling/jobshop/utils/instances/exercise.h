@@ -1,4 +1,4 @@
-// Copyright 2011 Éwerton Assis
+// Copyright 2011-2015 Ewerton Assis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 #define __jobshop_exercise_h__
 
 #include <string.h>
+#include <evolve/evolve_info.h>
 #include "../support.h"
 #include "parser.h"
 
@@ -25,13 +26,13 @@ fetch_execute (FILE *input_stream,
                algorithm_t alg_type)
 {
   jobshop_t *problem;
-  stats_t *stats;
+  evolve_stats_t *stats;
   problem = init_instance (input_stream, instance_type);
   if (problem == NULL)
     return;
   stats = executor (problem, alg_type);
-  print_common_info (stats, NULL);
-  del_stats (stats);
+  evolve_print_common_info (stats, NULL);
+  evolve_del_stats (stats);
   del_jobshop (problem);
 }
 
@@ -45,7 +46,7 @@ exercise_instances (algorithm_t heuristic,
   char *instance, *path, *file;
   instance_t type_instance;
   jobshop_t *problem;
-  stats_t *stats;
+  evolve_stats_t *stats;
 
   instance = calloc (15, sizeof (char));
   fscanf (input_stream, "%d", &num_files);
@@ -88,7 +89,7 @@ exercise_instances (algorithm_t heuristic,
       fprintf (output_stream, "%s,%lf,%lf,%lf,%ld,%ld,%ld\n", file, stats->max_fitness, stats->ave_fitness, stats->min_fitness, \
         stats->time, stats->evaluations_counted, stats->population_size);
       free (file);
-      del_stats (stats);
+      evolve_del_stats (stats);
       del_jobshop (problem);
       fclose (instance_file);
     }

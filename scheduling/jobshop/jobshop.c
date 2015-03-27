@@ -1,4 +1,4 @@
-// Copyright 2011 Éwerton Assis
+// Copyright 2011-2015 Ewerton Assis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#ifdef __llvm__
+#pragma GCC diagnostic ignored "-Wdangling-else"
+#endif
+
 #include "utils/settings.h"
 #include "utils/repr/rkey.h"
 #include "utils/instances/exercise.h"
@@ -22,7 +26,7 @@ main (int argc, char **argv)
   int i;
   set_options (argc, argv);
   if (exercises_executor (argc, argv))
-    return;
+    return 0;
   instance_t instance_type = input_type (argc, argv);
   algorithm_t alg_type = algorithm_type (argc, argv); /*
   if (!feof (stdin)) TODO Not working
@@ -34,4 +38,3 @@ main (int argc, char **argv)
     fetch_execute (stdin, instance_type, alg_type);
   destroy_options ();
 }
-

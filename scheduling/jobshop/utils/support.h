@@ -1,4 +1,4 @@
-// Copyright 2011 Éwerton Assis
+// Copyright 2011-2015 Ewerton Assis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,6 +14,9 @@
 
 #ifndef __jobshop_support_h__
 #define __jobshop_support_h__
+
+#include <string.h>
+#include <evolve/evolve_o_rkgaes.h>
 
 typedef enum { orlibrary, taillard } instance_t;
 typedef enum { ga, ivf, ivfls } algorithm_t;
@@ -104,9 +107,9 @@ void
 set_options (int argc, char **argv)
 {
   int i;
-  selection_method_t selection = proportional;
-  recombination_method_t recombination = onepoint;
-  mutation_method_t mutation = permutation;
+  evolve_selection_method_t selection = proportional;
+  evolve_recombination_method_t recombination = onepoint;
+  evolve_mutation_method_t mutation = permutation;
   if (argc > 1)
     for (i = 1; i < argc; i++)
       {
@@ -141,7 +144,13 @@ set_options (int argc, char **argv)
             continue;
           }
       }
-  init_options (selection, recombination, mutation);
+  evolve_init_rkgaes_options (selection, recombination, mutation);
+}
+
+void
+destroy_options ()
+{
+  evolve_destroy_rkgaes_options ();
 }
 
 void

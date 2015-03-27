@@ -1,3 +1,6 @@
 [submodule "eo/knapsack/cairoplot"]
-	path = eo/knapsack/cairoplot
-	url = git://github.com/earaujoassis/cairoplot.git
+  path = eo/knapsack/cairoplot
+  url = git://github.com/earaujoassis/cairoplot.git
+[submodule "evolve"]
+  path = evolve
+  url = git://github.com/earaujoassis/evolve.git

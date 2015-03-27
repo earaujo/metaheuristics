@@ -1,4 +1,4 @@
-// Copyright 2011 Éwerton Assis
+// Copyright 2011-2015 Ewerton Assis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,18 +15,23 @@
 #ifndef __jobshop_repr_h__
 #define __jobshop_repr_h__
 
-#include <evolve/paradigms/hybrid/ivfrkgaes.h>
+#include <evolve/evolve_common.h>
+#include <evolve/evolve_rng.h>
+#include <evolve/evolve_randomkey.h>
+#include <evolve/evolve_rkgaes.h>
+#include <evolve/evolve_ivfrkgaes.h>
+#include <evolve/evolve_o_rkgaes.h>
 #include "criteria.h"
 
 static jobshop_t *global_problem;
 static size_t global_evaluations_counted;
 
 unsigned int *
-jobs_indexes (real_chrom_t *chrom)
+jobs_indexes (evolve_real_chrom_t *chrom)
 {
   size_t i;
   size_t dimension = global_problem->n_jobs * global_problem->m_machines;
-  unsigned int *integer_serie = integer_series ((unsigned int) dimension, chrom);
+  unsigned int *integer_serie = evolve_integer_series ((unsigned int) dimension, chrom);
   unsigned int *operations = (unsigned int *) calloc (dimension, sizeof (unsigned int));
   for (i = 0; i < dimension; i++)
     operations[i] = (integer_serie[i] % global_problem->n_jobs) + 1;
@@ -35,7 +40,7 @@ jobs_indexes (real_chrom_t *chrom)
 }
 
 double
-fitness (real_chrom_t *chrom)
+fitness (evolve_real_chrom_t *chrom)
 {
   unsigned int *jobs_index = jobs_indexes (chrom);
   long int makespan_value = makespan (jobs_index, global_problem);
@@ -44,39 +49,39 @@ fitness (real_chrom_t *chrom)
   return (double) - makespan_value;
 }
 
-stats_t *
+evolve_stats_t *
 executor (jobshop_t *problem,
           algorithm_t alg_type)
 {
-  real_pop_t *population;
-  stats_t *stats;
+  evolve_real_pop_t *population;
+  evolve_stats_t *stats;
   size_t dimension, interval;
 
   global_problem = problem;
   dimension = problem->n_jobs * problem->m_machines;
-  population = init_real_pop (POP_SIZE);
-  set_rng (SEED);
-  random_real_pop (population, dimension, 0, dimension, &mock_check);
+  population = evolve_init_real_pop (POP_SIZE);
+  evolve_set_rng (SEED);
+  evolve_random_real_pop (population, dimension, 0, dimension, &evolve_mock_check);
   global_evaluations_counted = 0;
   if (alg_type == ivf)
     {
       interval = time (NULL);
-      stats = ivfrkgaes (population, MAX_GEN, &fitness, &mock_check);
+      stats = evolve_ivfrkgaes (population, MAX_GEN, &fitness, &evolve_mock_check);
       interval = time (NULL) - interval;
       stats->time = interval;
     }
   else
     {
       interval = time (NULL);
-      stats = rkgaes (population, MAX_GEN, &fitness, &mock_check);
+      stats = evolve_rkgaes (population, MAX_GEN, &fitness, &evolve_mock_check);
       interval = time (NULL) - interval;
       stats->time = interval;
     }
-  tear_rng ();
+  evolve_tear_rng ();
   stats->evaluations_counted = global_evaluations_counted;
   stats->population_size = population->size;
-  del_real_pop_indiv (population);
-  del_real_pop (population);
+  evolve_del_real_pop_indiv (population);
+  evolve_del_real_pop (population);
   return stats;
 }
 

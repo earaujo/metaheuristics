@@ -1,4 +1,4 @@
-// Copyright 2011 Éwerton Assis
+// Copyright 2011-2015 Ewerton Assis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 
 #define TAILLARD_N_INSTANCES     10
 
+#include <stdio.h>
 #include "../support.h"
 
 jobshop_t *

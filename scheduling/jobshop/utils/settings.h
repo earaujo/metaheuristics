@@ -1,4 +1,4 @@
-// Copyright 2011 Éwerton Assis
+// Copyright 2011-2015 Ewerton Assis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
 
 #ifndef __jobshop_settings_h__
 #define __jobshop_settings_h__
+
+#include <time.h>
 
 /*
 #define SEED                     9832312909032

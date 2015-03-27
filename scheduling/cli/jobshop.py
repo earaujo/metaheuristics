@@ -1,6 +1,6 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright 2011 Éwerton Assis
+# Copyright 2011-2015 Ewerton Assis
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import subprocess
 import json
 import datetime
 
-path = os.path.join(os.path.realpath(globals()["__file__"]), '../../jobshop/suite/')
+path = os.path.join(os.path.realpath(globals()["__file__"]), '../jobshop/suite/')
 sys.path.append(os.path.realpath(path))
 
 import utils
@@ -99,6 +99,6 @@ def main(argv):
   for experiment in selected_experiments:
     process_experiment(experiment, times, instances_folder, output_folder)
   print(datetime.datetime.now())
-  
+
 if __name__ == '__main__':
   main(sys.argv)
