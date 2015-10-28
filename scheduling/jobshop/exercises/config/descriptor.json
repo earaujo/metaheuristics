@@ -1,7 +1,7 @@
 {
   "times" : 20,
-  "instances_folder" : "exercises/config",
-  "output_folder" : "exercises/results",
+  "instances_folder" : "jobshop/exercises/config",
+  "output_folder" : "jobshop/exercises/results",
   "experiments" : [
     {
       "instances" : "or-library.txt",

@@ -1,0 +1,15 @@
+branches:
+  only:
+    - master
+language: c
+compiler: gcc
+git:
+  submodules: false
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+install:
+  - sudo apt-get install texinfo
+script:
+  - make scheduling
+  - scheduling/cli/scheduling.py jobshop ci/config/jobshop_descriptor.json

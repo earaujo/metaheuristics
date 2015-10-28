@@ -1,6 +1,6 @@
 8
 taillard
-/home/earaujo/personal/coding/metaheuristics/scheduling/jobshop/exercises/instances/taillard
+jobshop/exercises/instances/taillard
 tai15_15.txt
 tai20_15.txt
 tai20_20.txt

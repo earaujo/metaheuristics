@@ -37,4 +37,6 @@ main (int argc, char **argv)
   else
     fetch_execute (stdin, instance_type, alg_type);
   destroy_options ();
+
+  return 0;
 }

@@ -1,6 +1,6 @@
 43
 orlibrary
-/home/earaujo/personal/coding/metaheuristics/scheduling/jobshop/exercises/instances/or-library
+jobshop/exercises/instances/or-library
 ft06.txt
 ft10.txt
 ft20.txt
@@ -44,4 +44,3 @@ la37.txt
 la38.txt
 la39.txt
 la40.txt
-

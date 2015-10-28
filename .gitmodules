@@ -1,6 +1,8 @@
 [submodule "eo/knapsack/cairoplot"]
   path = eo/knapsack/cairoplot
   url = git://github.com/earaujoassis/cairoplot.git
+  ignore = dirty
 [submodule "evolve"]
   path = evolve
   url = git://github.com/earaujoassis/evolve.git
+  ignore = dirty

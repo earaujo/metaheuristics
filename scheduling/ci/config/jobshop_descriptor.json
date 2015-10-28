@@ -1,0 +1,16 @@
+{
+  "times" : 1,
+  "instances_folder" : "ci/config",
+  "output_folder" : "ci/results",
+  "experiments" : [
+    {
+      "instances" : "or-library.txt",
+      "folder_name" : "exp00",
+      "file_prefix" : "or-library-test",
+      "algorithms" : [ "ivf", "ga" ],
+      "recombination" : "onepoint",
+      "selection" : "ranking",
+      "mutation" : "permutation"
+    }
+  ]
+}

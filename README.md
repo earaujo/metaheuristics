@@ -1,4 +1,6 @@
-# Metaheuristics Research Algorithms
+# Metaheuristics Research Algorithms [![Build Status](https://travis-ci.org/earaujoassis/metaheuristics.svg)](https://travis-ci.org/earaujoassis/metaheuristics)
+
+> Metaheuristics algorithms applications
 
 Each folder has a different purpose:
 
@@ -12,6 +14,14 @@ some Multidimensional 0-1 Knapsack instances.
 mainly Open-shop, Flow-shop, and Job-shop. Each one has its own problem instances files, used for
 results analysis and algorithm tuning. Those instances files are not mine and should be disregarded
 from the LICENSE scope.
+
+## Setup & Running
+
+```sh
+$ sh build-evolve.sh
+$ make scheduling
+$ scheduling/cli/scheduling.py jobshop ci/config/jobshop_descriptor.json
+```
 
 ## Dependencies
 
